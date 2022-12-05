@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
-# 0-print_list_integer.py
+# 1-element_at.py
 
-def print_list_integer(my_list=[]):
-    """Print all integers of a list."""
-    for i in range(len(my_list)):
-        print("{:d}".format(my_list[i]))
+def element_at(my_list, idx):
+
+    """Retrive an element from a list."""
+    if idx < 0 or idx > (len(my_list) - 1):
+        return None
+    return (my_list[idx])
