@@ -1,11 +1,9 @@
+#!/usr/bin/python3
 
-dule 3-rectangle
+# 3-rectangle.py
 
-Contains class Rectangle with private attribute width and height,
 
-public area and perimeter methods, and allows printing #'s
-
-"""
+"""Defines a Rectangle class."""
 
 
 
@@ -13,43 +11,23 @@ public area and perimeter methods, and allows printing #'s
 
 class Rectangle:
 
-    """
-
-    Defines class rectangle with private attribute width and height
+    """Represent a rectangle."""
 
 
-
-    Args:
-
-        width (int): width
-
-        height (int): height
-
-
-
-    Functions:
-
-        __init__(self, width, height)
-
-        width(self)
-
-        width(self, value)
-
-        height(self)
-
-        height(self, value)
-
-        area(self)
-
-        perimeter(self)
-
-        __str__(self)
-
-    """
 
     def __init__(self, width=0, height=0):
 
-        """ Initialize rectangles """
+        """Initialize a new Rectangle.
+
+
+
+        Args:
+
+            width (int): The width of the new rectangle.
+
+            height (int): The height of the new rectangle.
+
+        """
 
         self.width = width
 
@@ -61,7 +39,7 @@ class Rectangle:
 
     def width(self):
 
-        """ Getter returns width """
+        """Get/set the width of the Rectangle."""
 
         return self.__width
 
@@ -70,8 +48,6 @@ class Rectangle:
     @width.setter
 
     def width(self, value):
-
-        """ Setter sets width if int > 0 """
 
         if not isinstance(value, int):
 
@@ -89,7 +65,7 @@ class Rectangle:
 
     def height(self):
 
-        """ Getter returns height """
+        """Get/set the height of the Rectangle."""
 
         return self.__height
 
@@ -98,8 +74,6 @@ class Rectangle:
     @height.setter
 
     def height(self, value):
-
-        """ Setter sets height if int > 0 """
 
         if not isinstance(value, int):
 
@@ -115,32 +89,48 @@ class Rectangle:
 
     def area(self):
 
-        """ Return width * height """
+        """Return the area of the Rectangle."""
 
-        return self.__width * self.__height
+        return (self.__width * self.__height)
 
 
 
     def perimeter(self):
 
-        """ Return 2*width + 2*height (or return 0 if width or height is 0)"""
+        """Return the perimeter of the Rectangle."""
 
         if self.__width == 0 or self.__height == 0:
 
-            return 0
+            return (0)
 
-        return (2 * self.__width) + (2 * self.height)
+        return ((self.__width * 2) + (self.__height * 2))
 
 
 
     def __str__(self):
 
-        """ Prints rectangle with #'s """
+        """Return the printable representation of the Rectangle.
+
+
+
+        Represents the rectangle with the # character.
+
+        """
 
         if self.__width == 0 or self.__height == 0:
 
-            return ""
+            return ("")
 
-        pic = "\n".join(["#" * self.__width for rows in range(self.__height)])
 
-        return pic
+
+        rect = []
+
+        for i in range(self.__height):
+
+            [rect.append('#') for j in range(self.__width)]
+
+            if i != self.__height - 1:
+
+                rect.append("\n")
+
+        return ("".join(rect))
