@@ -1,0 +1,22 @@
+#!/usr/bin/python3
+
+import os
+import sys
+import py_compile
+
+# Get the Python script file name from the environment variable
+py_file = os.getenv('PYFILE')
+
+if not py_file:
+    sys.exit("Error: PYFILE environment variable not set.")
+
+# Compile the Python script
+try:
+    py_compile.compile(py_file, doraise=True)
+except py_compile.PyCompileError as e:
+    sys.exit(f"Compilation error: {e}")
+
+# Generate the bytecode file name
+bytecode_file = f"{py_file}c"
+
+print(f"Successfully compiled {py_file} to {bytecode_file}.")
