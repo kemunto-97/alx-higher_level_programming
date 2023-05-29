@@ -12,7 +12,7 @@ if not py_file:
 
 # Compile the Python script
 try:
-    py_compile.compile(py_file, doraise=True, optimize=0)
+    py_compile.compile(py_file, doraise=True, optimize=2)
 except py_compile.PyCompileError as e:
     sys.exit(f"Compilation error: {e}")
 
