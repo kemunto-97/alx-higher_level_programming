@@ -1,19 +1,19 @@
 #!/usr/bin/node
 
-const request = require('request');
+const fs = require('fs');
 
-if (process.argv.length !== 3) {
-  console.error('Usage: node script.js <URL>');
+if (process.argv.length !== 4) {
+  console.error('Usage: node script.js <file path> <string to write>');
   process.exit(1);
 }
 
-const url = process.argv[2];
+const filePath = process.argv[2];
+const contentToWrite = process.argv[3];
 
-request.get(url, (error, response) => {
-  if (error) {
-    console.error('Error:', error.message);
+fs.writeFile(filePath, contentToWrite, 'utf8', (err) => {
+  if (err) {
+    console.error('Error:', err);
   } else {
-    console.log('code:', response.statusCode);
+    console.log('Content written to the file successfully!');
   }
 });
-
