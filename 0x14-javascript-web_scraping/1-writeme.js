@@ -1,7 +1,19 @@
 #!/usr/bin/node
 
-const fs = require('fs');
-fs.writeFile(process.argv[2], 'Python is Cool!', 'utf8', function (err, data) {
-    if (err) throw err;
-  console.log('Saved!');
+const request = require('request');
+
+if (process.argv.length !== 3) {
+  console.error('Usage: node script.js <URL>');
+  process.exit(1);
+}
+
+const url = process.argv[2];
+
+request.get(url, (error, response) => {
+  if (error) {
+    console.error('Error:', error.message);
+  } else {
+    console.log('code:', response.statusCode);
+  }
 });
+
