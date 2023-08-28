@@ -1,4 +1,4 @@
 #!/bin/bash
 # Get the size of the response header from a URL.
-curl -s "$1" | wc -c
+curl -sI "$1" | grep 'Content-Length:' | cut -f2 -d' '
 
